@@ -1,4 +1,5 @@
+require('react')
 require('./main.css')
 
-let component = require('./component')
+var component = require('./component')
 document.body.appendChild(component())

@@ -26,12 +26,12 @@ const common = {
 }
 
 var config
-
-switch(process.env.npm_lifecircle_event){
+switch(process.env.npm_lifecycle_event){
   case 'build':
     config = merge(
       common,
       {devtool: 'source-map'},
+      parts.minify(),
       parts.setupCSS(PATHS.app)
     )
     break
