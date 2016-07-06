@@ -29,13 +29,20 @@ var config
 
 switch(process.env.npm_lifecircle_event){
   case 'build':
-    config = merge(common,{})
+    config = merge(
+      common,
+      parts.setupCSS(PATHS.app)
+    )
     break
   default:
-    config = merge(common,parts.devServer({
-      host: process.env.HOST,
-      port: process.env.PORT
-    }))
+    config = merge(
+      common,
+      parts.setupCSS(PATHS.app),
+      parts.devServer({
+        host: process.env.HOST,
+        port: process.env.PORT
+      })
+    )
 }
 
 module.exports = validator(config)
