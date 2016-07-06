@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 const validator = require('webpack-validator')
 
+const pkg = require('./package.json')
+
 const parts = require('./libs/parts')
 
 const PATHS = {
@@ -37,7 +39,7 @@ switch(process.env.npm_lifecycle_event){
       ),
       parts.extractBundle({
         name: 'vendor',
-        entries: ['react']
+        entries: Object.keys(pkg.dependencies)
       }),
       parts.minify(),
       parts.setupCSS(PATHS.app)
