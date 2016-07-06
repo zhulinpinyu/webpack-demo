@@ -2,6 +2,6 @@ body {
   background: white;
 }
 
-:local(.redBtn){
+.redBtn {
   background: cornsilk;
 }
