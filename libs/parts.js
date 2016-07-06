@@ -1,8 +1,7 @@
 const webpack =  require('webpack')
-
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const PurifyCSSPlugin = require('purifycss-webpack-plugin')
 
 exports.devServer = function(options){
   return {
@@ -99,6 +98,17 @@ exports.clean = function(path){
     plugins: [
       new CleanWebpackPlugin([path],{
         root: process.cwd()
+      })
+    ]
+  }
+}
+
+exports.purifyCSS = function(paths){
+  return {
+    plugins: [
+      new PurifyCSSPlugin({
+        basePath: process.cwd(),
+        paths: paths
       })
     ]
   }
