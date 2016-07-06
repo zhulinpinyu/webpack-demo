@@ -35,6 +35,10 @@ switch(process.env.npm_lifecycle_event){
         'process.env.NODE_ENV',
         'production'
       ),
+      parts.extractBundle({
+        name: 'vendor',
+        entries: ['react']
+      }),
       parts.minify(),
       parts.setupCSS(PATHS.app)
     )
